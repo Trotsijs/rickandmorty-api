@@ -18,7 +18,8 @@ class ApiClient
 
     public function fetchCharacters(): array
     {
-        $url = 'https://rickandmortyapi.com/api/character/';
+        $page = rand(1, 40);
+        $url = 'https://rickandmortyapi.com/api/character?page=' . $page;
         $response = $this->client->request('GET', $url);
 
         return json_decode($response->getBody()->getContents())->results;
