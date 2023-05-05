@@ -15,7 +15,6 @@ class ApiClient
         $this->client = new Client();
     }
 
-
     public function fetchCharacters(): array
     {
         $page = rand(1, 40);
@@ -23,7 +22,6 @@ class ApiClient
         $response = $this->client->request('GET', $url);
 
         return json_decode($response->getBody()->getContents())->results;
-
     }
 
     public function createCharacter(stdClass $character): Character
@@ -45,7 +43,7 @@ class ApiClient
         foreach ($characters as $character) {
             $charCollection[] = $this->createCharacter($character);
         }
+
         return $charCollection;
     }
-
 }
