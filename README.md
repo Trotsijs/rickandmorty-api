@@ -14,11 +14,17 @@ Displays Information about Characters from the show.
 composer install
 ````
 
-6. Start server in your terminal from `/public` directory:
+6. Navigate to `/public` directory:
+````php
+cd .\public\
 ````
+7. Start a server from the terminal
+```php
 php -S localhost:8000
-````
-7. Navigate to http://localhost:8000 to see the site.
+```
+
+
+8. Navigate to http://localhost:8000 to see the site.
 
 ### Resources:
 
