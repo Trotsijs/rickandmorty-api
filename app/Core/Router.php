@@ -13,6 +13,7 @@ class Router
         $dispatcher = \FastRoute\simpleDispatcher(function (RouteCollector $router) {
             $router->addRoute('GET', '/', [CharController::class, 'index']);
             $router->addRoute('GET', '/characters', [CharController::class, 'index']);
+            $router->addRoute('GET', '/locations', [CharController::class, 'index']);
         });
 
         $httpMethod = $_SERVER['REQUEST_METHOD'];
