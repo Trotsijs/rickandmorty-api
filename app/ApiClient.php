@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\Character;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 
 class ApiClient
 {
@@ -17,27 +18,32 @@ class ApiClient
 
     public function fetchCharacters(): array
     {
-        $page = '?page=' . rand(1, 40);
-        $url = self::URL . '/character' . $page;
-        $response = $this->client->request('GET', $url);
+        try {
+            $page = '?page=' . rand(1, 40);
+            $url = self::URL . '/character' . $page;
+            $response = $this->client->request('GET', $url);
 
-        $characters = json_decode($response->getBody()->getContents())->results;
+            $characters = json_decode($response->getBody()->getContents())->results;
 
-        $characterCollection = [];
+            $characterCollection = [];
 
-        foreach ($characters as $character) {
-            $episode = $this->client->get($character->episode[0])->getBody()->getContents();
-            $characterCollection[] = new Character
-            (
-                $character->name,
-                $character->image,
-                $character->status,
-                $character->species,
-                $character->location->name,
-                json_decode($episode)->episode
-            );
+            foreach ($characters as $character) {
+                $episode = $this->client->get($character->episode[0])->getBody()->getContents();
+                $characterCollection[] = new Character
+                (
+                    $character->name,
+                    $character->image,
+                    $character->status,
+                    $character->species,
+                    $character->location->name,
+                    json_decode($episode)->episode
+                );
+            }
+
+            return $characterCollection;
+
+        } catch (GuzzleException $exception) {
+            return [];
         }
-
-        return $characterCollection;
     }
 }

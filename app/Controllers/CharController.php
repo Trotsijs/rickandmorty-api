@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\ApiClient;
-use App\TwigView;
+use App\Core\TwigView;
 
 class CharController
 {
@@ -20,6 +20,3 @@ class CharController
     }
 
 }
-
-//$controller = new CharController();
-//$characters = $controller->characters();
