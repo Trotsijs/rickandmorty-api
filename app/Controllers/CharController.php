@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\ApiClient;
+use App\TwigView;
 
 class CharController
 {
@@ -13,9 +14,12 @@ class CharController
         $this->client = new ApiClient();
     }
 
-    public function characters(): array
+    public function index(): TwigView
     {
-        return $this->client->createCollection();
+        return new TwigView('characters', ['characters' => $this->client->fetchCharacters()]);
     }
 
 }
+
+//$controller = new CharController();
+//$characters = $controller->characters();
