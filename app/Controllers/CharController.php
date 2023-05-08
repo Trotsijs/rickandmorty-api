@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\ApiClient;
 
-class Controller
+class CharController
 {
     private ApiClient $client;
 

@@ -9,7 +9,7 @@ class Character
     private string $status;
     private string $species;
     private string $lastLocation;
-    private string $origin;
+    private string $episode;
 
     public function __construct
     (
@@ -18,14 +18,14 @@ class Character
         string $status,
         string $species,
         string $lastLocation,
-        string $origin
+        string $episode
     ) {
         $this->name = $name;
         $this->picture = $picture;
         $this->status = $status;
         $this->species = $species;
         $this->lastLocation = $lastLocation;
-        $this->origin = $origin;
+        $this->episode = $episode;
     }
 
     public function getName(): string
@@ -53,9 +53,9 @@ class Character
         return $this->lastLocation;
     }
 
-    public function getOrigin(): string
+    public function getEpisode(): string
     {
-        return $this->origin;
+        return $this->episode;
     }
 
 }
