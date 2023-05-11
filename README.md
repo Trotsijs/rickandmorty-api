@@ -3,7 +3,7 @@
 Displays Information about Characters from the show.
 
 ### Preview:
-<img src="https://i.ibb.co/5rMVGLC/Screenshot-2023-05-11-220446.png" width=500 height=50% alt="image">
+<img src="https://i.ibb.co/5rMVGLC/Screenshot-2023-05-11-220446.png" width=100% height=50% alt="image">
 
 
 ### Installation:
