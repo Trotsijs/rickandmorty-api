@@ -1,0 +1,12 @@
+{% extends "layout.html.twig" %}
+
+{% block characters %}
+    <div class="ml-9 mt-2 flex flex-wrap">
+        {% for episode in episodes %}
+            <a href="#" class="mt-10 ml-11 mr-5 block h-50 w-80 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ episode.season }} "{{ episode.name }}"</h5>
+                <p class="font-normal text-gray-700 dark:text-gray-400">Air date: {{ episode.airDate }}</p>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

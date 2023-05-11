@@ -19,4 +19,19 @@ class CharController
         return new TwigView('characters', ['characters' => $this->client->fetchCharacters()]);
     }
 
+    public function locations(): TwigView
+    {
+        return new TwigView('locations', ['locations' => $this->client->fetchLocations()]);
+    }
+
+    public function episodes(): TwigView
+    {
+        return new TwigView('episodes', ['episodes' => $this->client->fetchEpisodes()]);
+    }
+
+    public function search(): TwigView
+    {
+        $name = $_GET['search'];
+        return new TwigView('characters', ['characters' => $this->client->searchCharacters($name)]);
+    }
 }
