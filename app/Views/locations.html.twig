@@ -1,12 +1,13 @@
 {% extends "layout.html.twig" %}
 
 {% block characters %}
-    <div class="ml-9 mt-2 flex flex-wrap">
+    <div class="flex items-center justify-center flex flex-wrap">
         {% for location in locations %}
-            <a href="#" class="mt-10 ml-11 mr-5 block h-50 w-80 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ location.name }}</h5>
-                <p class="font-normal text-gray-700 dark:text-gray-400">Location type: {{ location.type }}</p>
-                <p class="font-normal text-gray-700 dark:text-gray-400">Dimension: {{ location.dimension }}</p>
+            <a href="#" class="mt-10 ml-11 mr-5 block h-64 w-96 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">"{{ location.name }}"</h5>
+                <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+                <p class="text-center font-normal text-gray-700 dark:text-gray-400">Location type: {{ location.type }}</p>
+                <p class="text-center font-normal text-gray-700 dark:text-gray-400">Dimension: {{ location.dimension }}</p>
             </a>
         {% endfor %}
     </div>

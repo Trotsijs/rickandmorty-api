@@ -69,8 +69,7 @@ class ApiClient
     public function fetchLocations(): array
     {
         try {
-            $page = '?page=' . rand(1, 7);
-            $url = self::URL . '/location' . $page;
+            $url = self::URL . '/location';
             $response = $this->client->request('GET', $url);
 
             $locations = json_decode($response->getBody()->getContents())->results;
@@ -91,8 +90,7 @@ class ApiClient
     public function fetchEpisodes(): array
     {
         try {
-            $page = '?page=' . rand(1, 3);
-            $url = self::URL . '/episode' . $page;
+            $url = self::URL . '/episode';
             $response = $this->client->request('GET', $url);
 
             $episodes = json_decode($response->getBody()->getContents())->results;
