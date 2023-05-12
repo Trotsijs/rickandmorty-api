@@ -3,15 +3,15 @@
 Displays Information about Characters from the show.
 
 ### Preview:
-<hr>
+
 Characters: <br><br>
 <img src="characters.png" alt="characters">
 
 Episodes: <br><br>
-<img src="https://i.ibb.co/QvtRgqC/episodes.png" alt="episodes">
+<img src="episodes.png" alt="episodes">
 
 Locations: <br><br>
-<img src="https://i.ibb.co/VY2xBYQ/locations.png" alt="locations">
+<img src="locations.png" alt="locations">
 
 ### Installation:
 
