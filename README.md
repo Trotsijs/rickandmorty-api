@@ -20,18 +20,18 @@ Locations: <br><br>
 ````
 composer install
 ````
-
-3. Navigate to `/public` directory:
+3. Create `cache` folder in your project root directory
+4. Navigate to `/public` directory:
 ````php
 cd .\public\
 ````
-4. Start a server from the terminal
+5. Start a server from the terminal
 ```php
 php -S localhost:8000
 ```
 
 
-5. Navigate to http://localhost:8000 to see the site.
+6. Navigate to http://localhost:8000 to see the site.
 
 ### Resources:
 
