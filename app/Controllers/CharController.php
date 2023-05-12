@@ -16,22 +16,36 @@ class CharController
 
     public function index(): TwigView
     {
-        return new TwigView('characters', ['characters' => $this->client->fetchCharacters()]);
+        $pageNumber = $_GET['page'] ?? '';
+        if ($pageNumber == '') {
+            $pageNumber = '1';
+        }
+
+        return new TwigView('characters', ['characters' => $this->client->fetchCharacters($pageNumber)]);
     }
 
     public function locations(): TwigView
     {
-        return new TwigView('locations', ['locations' => $this->client->fetchLocations()]);
+        $pageNumber = $_GET['locationPage'] ?? '';
+        if ($pageNumber == '') {
+            $pageNumber = '1';
+        }
+        return new TwigView('locations', ['locations' => $this->client->fetchLocations($pageNumber)]);
     }
 
     public function episodes(): TwigView
     {
-        return new TwigView('episodes', ['episodes' => $this->client->fetchEpisodes()]);
+        $pageNumber = $_GET['episodePage'] ?? '';
+        if ($pageNumber == '') {
+            $pageNumber = '1';
+        }
+        return new TwigView('episodes', ['episodes' => $this->client->fetchEpisodes($pageNumber)]);
     }
 
     public function search(): TwigView
     {
         $name = $_GET['search'];
+
         return new TwigView('characters', ['characters' => $this->client->searchCharacters($name)]);
     }
 }

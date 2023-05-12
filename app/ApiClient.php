@@ -18,19 +18,20 @@ class ApiClient
         $this->client = new Client();
     }
 
-    public function fetchCharacters(): array
+    public function fetchCharacters(string $pageNumber): array
     {
 
         try {
 
             $characterCollection = [];
+            $page = '/?page=';
 
-            if (!Cache::has('characters')) {
-                $response = $this->client->get(self::URL . '/character');
+            if (!Cache::has('characters' . $pageNumber)) {
+                $response = $this->client->get(self::URL . '/character' . $page . $pageNumber);
                 $responseJson = $response->getBody()->getContents();
-                Cache::remember('characters', $responseJson);
+                Cache::remember('characters' . $pageNumber, $responseJson);
             } else {
-                $responseJson = Cache::get('characters');
+                $responseJson = Cache::get('characters' . $pageNumber);
             }
 
             $characters = json_decode($responseJson);
@@ -66,17 +67,25 @@ class ApiClient
         }
     }
 
-    public function fetchLocations(): array
+    public function fetchLocations(string $pageNumber): array
     {
         try {
-            $url = self::URL . '/location';
-            $response = $this->client->request('GET', $url);
+            if (!Cache::has('locations' . $pageNumber)) {
+                $url = self::URL . '/location';
+                $page = '/?page=';
+                $response = $this->client->request('GET', $url . $page . $pageNumber);
+                $responseJson = $response->getBody()->getContents();
+                Cache::remember('locations' . $pageNumber, $responseJson);
+            } else {
+                $responseJson = Cache::get('locations' . $pageNumber);
+            }
 
-            $locations = json_decode($response->getBody()->getContents())->results;
+
+            $locations = json_decode($responseJson);
 
             $locationCollection = [];
 
-            foreach ($locations as $location) {
+            foreach ($locations->results as $location) {
                 $locationCollection[] = new Location($location->name, $location->type, $location->dimension);
             }
 
@@ -87,17 +96,26 @@ class ApiClient
         }
     }
 
-    public function fetchEpisodes(): array
+    public function fetchEpisodes(string $pageNumber): array
     {
         try {
-            $url = self::URL . '/episode';
-            $response = $this->client->request('GET', $url);
 
-            $episodes = json_decode($response->getBody()->getContents())->results;
+            $url = self::URL . '/episode';
+            $page = '/?page=';
+
+            if (!Cache::has('episodes' . $pageNumber)) {
+                $response = $this->client->request('GET', $url . $page . $pageNumber);
+                $responseJson = $response->getBody()->getContents();
+                Cache::remember('episodes' . $pageNumber, $responseJson);
+            } else {
+                $responseJson = Cache::get('episodes' . $pageNumber);
+            }
+
+            $episodes = json_decode($responseJson);
 
             $episodeCollection = [];
 
-            foreach ($episodes as $episode) {
+            foreach ($episodes->results as $episode) {
                 $episodeCollection[] = new Episode($episode->name, $episode->air_date, $episode->episode);
             }
 
@@ -112,13 +130,20 @@ class ApiClient
     {
         try {
             $url = self::URL . '/character/?name=' . $character;
-            $response = $this->client->request('GET', $url);
 
-            $characters = json_decode($response->getBody()->getContents())->results;
+            if (!Cache::has('character_' . $character)) {
+                $response = $this->client->request('GET', $url);
+                $responseJson = $response->getBody()->getContents();
+                Cache::remember('character_' . $character, $responseJson);
+            } else {
+                $responseJson = Cache::get('character_' . $character);
+            }
+
+            $characters = json_decode($responseJson);
 
             $characterCollection = [];
 
-            foreach ($characters as $character) {
+            foreach ($characters->results as $character) {
                 $episode = $this->client->get($character->episode[0])->getBody()->getContents();
                 $characterCollection[] = new Character
                 (

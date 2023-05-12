@@ -3,13 +3,22 @@
 {% block characters %}
     <div class="flex items-center justify-center flex flex-wrap">
         {% for location in locations %}
-            <a href="#" class="mt-10 ml-11 mr-5 block h-64 w-96 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <a href="#" class="shadow-gray-950 shadow-2xl mt-10 ml-11 mr-5 block h-64 w-96 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">"{{ location.name }}"</h5>
                 <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
-                <p class="text-center font-normal text-gray-700 dark:text-gray-400">Location type: {{ location.type }}</p>
-                <p class="text-center font-normal text-gray-700 dark:text-gray-400">Dimension: {{ location.dimension }}</p>
+                <p class="text-center font-normal text-gray-700 dark:text-gray-400">Location type: <span class="font-bold">{{ location.type }}</span></p>
+                <p class="text-center font-normal text-gray-700 dark:text-gray-400">Dimension: <span class="font-bold">{{ location.dimension|capitalize }}</span></p>
             </a>
         {% endfor %}
+    </div>
+    <div class="ml-20 mr-16 mt-12 flex items-center justify-center flex flex-wrap">
+        <form action="/locations" method="GET">
+            {% for i in range(1, 7) %}
+                <button name="locationPage" type="submit" value="{{ i }}"
+                        class="w-9 mb-2 px-3 py-2 text-xs font-medium text-center text-white bg-gray-800 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-800">
+                    {{ i }}</button>
+            {% endfor %}
+        </form>
     </div>
 {% endblock %}
 
