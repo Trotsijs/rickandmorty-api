@@ -5,7 +5,7 @@ Displays Information about Characters from the show.
 ### Preview:
 <hr>
 Characters: <br><br>
-<img src="https://i.ibb.co/4PHpRHS/characters.png" alt="characters">
+<img src="characters.png" alt="characters">
 
 Episodes: <br><br>
 <img src="https://i.ibb.co/QvtRgqC/episodes.png" alt="episodes">
