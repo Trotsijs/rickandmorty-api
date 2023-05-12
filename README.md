@@ -3,8 +3,15 @@
 Displays Information about Characters from the show.
 
 ### Preview:
-<img src="https://i.ibb.co/5rMVGLC/Screenshot-2023-05-11-220446.png" width=100% height=50% alt="image">
+<hr>
+Characters: <br><br>
+<img src="https://i.ibb.co/4PHpRHS/characters.png" alt="characters">
 
+Episodes: <br><br>
+<img src="https://i.ibb.co/QvtRgqC/episodes.png" alt="episodes">
+
+Locations: <br><br>
+<img src="https://i.ibb.co/VY2xBYQ/locations.png" alt="locations">
 
 ### Installation:
 
